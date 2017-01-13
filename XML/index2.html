@@ -19,13 +19,13 @@
     function myFunction(xml) {
         let xmlDoc = xml.responseXML;
         let txt = "";
-        let x = xmlDoc.getElementsByTagName("title");
-        let y = xmlDoc.getElementsByTagName("content");
-        let z = xmlDoc.getElementsByTagName("region");
-        let d = xmlDoc.getElementsByTagName("updatedate")[0];
+        let titleNode = xmlDoc.getElementsByTagName("title");
+        let contentNode = xmlDoc.getElementsByTagName("content");
+        let regionNode = xmlDoc.getElementsByTagName("region");
+        let updatedateNode = xmlDoc.getElementsByTagName("updatedate")[0];
 
-        for (let i = 0; i < x.length; i++) {
-            txt += x[i].childNodes[0].nodeValue + ","+ y[i].childNodes[0].nodeValue + "," + z[i].childNodes[0].nodeValue +","+ (d.childNodes.length ? d.childNodes[0].nodeValue : "") +"<br>"
+        for (let i = 0; i < titleNode.length; i++) {
+            txt += titleNode[i].childNodes[0].nodeValue + ","+ contentNode[i].childNodes[0].nodeValue + "," + regionNode[i].childNodes[0].nodeValue +","+ (updatedateNode.childNodes.length ? updatedateNode.childNodes[0].nodeValue : "") +"<br>"
         }
 
         document.getElementById("dowjones").innerHTML = txt;

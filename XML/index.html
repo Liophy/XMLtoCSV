@@ -16,19 +16,19 @@
 
     function myFunction(xml) {
         let xmlDoc = xml.responseXML;
-        let x = xmlDoc.getElementsByTagName("student");
+        let studentNode = xmlDoc.getElementsByTagName("student");
 
-        for (let i = 0; i < x.length; i++) {
+        for (let i = 0; i < studentNode.length; i++) {
 
-            document.write(x[i].getAttribute("rollno"));
+            document.write(studentNode[i].getAttribute("rollno"));
             document.write("    ");
-            document.write(x[i].getElementsByTagName("firstname")[0].childNodes[0].nodeValue);
+            document.write(studentNode[i].getElementsByTagName("firstname")[0].childNodes[0].nodeValue);
             document.write("    ");
-            document.write(x[i].getElementsByTagName("lastname")[0].childNodes[0].nodeValue);
+            document.write(studentNode[i].getElementsByTagName("lastname")[0].childNodes[0].nodeValue);
             document.write("    ");
-            document.write(x[i].getElementsByTagName("nickname")[0].childNodes[0].nodeValue);
+            document.write(studentNode[i].getElementsByTagName("nickname")[0].childNodes[0].nodeValue);
             document.write("    ");
-            document.write(x[i].getElementsByTagName("marks")[0].childNodes[0].nodeValue);
+            document.write(studentNode[i].getElementsByTagName("marks")[0].childNodes[0].nodeValue);
             document.write("<br/>");
         }
     }
