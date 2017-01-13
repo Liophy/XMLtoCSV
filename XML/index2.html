@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="dowjones"></p>
+
+<script>
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            myFunction(this);
+            console.log(this.responseText)
+        }
+    };
+    xhttp.open("GET", "dow-jones_xml-feed-profiles_20160412.xml", true);
+    xhttp.send();
+
+    function myFunction(xml) {
+        let xmlDoc = xml.responseXML;
+        let txt = "";
+        let x = xmlDoc.getElementsByTagName("title");
+        let y = xmlDoc.getElementsByTagName("content");
+        let z = xmlDoc.getElementsByTagName("region");
+        let d = xmlDoc.getElementsByTagName("updatedate")[0];
+
+        for (let i = 0; i < x.length; i++) {
+            txt += x[i].childNodes[0].nodeValue + ","+ y[i].childNodes[0].nodeValue + "," + z[i].childNodes[0].nodeValue +","+ (d.childNodes.length ? d.childNodes[0].nodeValue : "") +"<br>"
+        }
+
+        document.getElementById("dowjones").innerHTML = txt;
+    }
+</script>
+</body>
+</html>

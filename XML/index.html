@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            myFunction(this);
+            console.log(this.responseText)
+        }
+    };
+    xhttp.open("GET", "class.xml", true);
+    xhttp.send();
+
+    function myFunction(xml) {
+        let xmlDoc = xml.responseXML;
+        let x = xmlDoc.getElementsByTagName("student");
+
+        for (let i = 0; i < x.length; i++) {
+
+            document.write(x[i].getAttribute("rollno"));
+            document.write("    ");
+            document.write(x[i].getElementsByTagName("firstname")[0].childNodes[0].nodeValue);
+            document.write("    ");
+            document.write(x[i].getElementsByTagName("lastname")[0].childNodes[0].nodeValue);
+            document.write("    ");
+            document.write(x[i].getElementsByTagName("nickname")[0].childNodes[0].nodeValue);
+            document.write("    ");
+            document.write(x[i].getElementsByTagName("marks")[0].childNodes[0].nodeValue);
+            document.write("<br/>");
+        }
+    }
+</script>
+</body>
+</html>
